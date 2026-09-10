@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --glass-bg: rgba(18, 24, 38, 0.65);
+  --glass-border: rgba(100, 180, 255, 0.18);
+  --primary: #00c8ff;
+  --safe: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --text: #ecf3ff;
+  --text-secondary: #9aaec9;
+  --card-radius: 26px;
+  --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+  --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.7);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at 20% 10%, #121a2a, #07090e 90%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 12px 22px; border-radius: 40px;
+  font-weight: 600; cursor: pointer; transition: var(--transition);
+  background: rgba(255, 255, 255, 0.04); color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.btn-primary {
+  background: linear-gradient(135deg, #00c8ff, #0077ff);
+  border: none; color: #fff; box-shadow: 0 8px 20px -6px #0077ff80;
+}
+.btn-primary:hover { transform: scale(1.02); }
+.btn-danger { background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #ff8a8a; }
+.btn-safe { background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #7ef0a8; }
+
+/* Layouts */
+.app-container { display: flex; min-height: 100vh; width: 100%; position: relative; }
+.sidebar {
+  width: 260px; padding: 28px 16px; display: flex; flex-direction: column;
+  gap: 8px; background: rgba(10, 15, 25, 0.7); backdrop-filter: blur(20px);
+  border-right: 1px solid var(--glass-border); height: 100vh; position: sticky; top: 0;
+}
+.main-content { flex: 1; padding: 36px 44px 60px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+/* Navigation */
+.nav-item {
+  display: flex; align-items: center; gap: 14px; padding: 12px 16px;
+  border-radius: 16px; color: var(--text-secondary); font-weight: 500;
+  cursor: pointer; transition: var(--transition);
+}
+.nav-item:hover { background: rgba(0, 200, 255, 0.06); color: var(--text); }
+.nav-item.active { background: rgba(0, 200, 255, 0.12); color: var(--primary); border: 1px solid rgba(0, 200, 255, 0.2); }
+
+/* Landing & Auth */
+.landing-title {
+  font-size: 3.4rem; font-weight: 800;
+  background: linear-gradient(135deg, #fff 30%, #00c8ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.auth-tabs { display: flex; gap: 8px; margin-bottom: 24px; background: rgba(0, 0, 0, 0.3); border-radius: 40px; padding: 4px; }
+.auth-tab { flex: 1; text-align: center; padding: 10px; border-radius: 30px; cursor: pointer; font-weight: 600; color: var(--text-secondary); }
+.auth-tab.active { background: var(--primary); color: #000; }
+.form-input { width: 100%; padding: 14px 16px; border-radius: 16px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--glass-border); color: var(--text); margin-top: 6px; margin-bottom: 16px; }
+
+/* Dashboard Grids */
+.dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.stat-card { padding: 20px; display: flex; flex-direction: column; gap: 6px; }
+.stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary); }
+.stat-value { font-size: 1.8rem; font-weight: 700; }
+
+/* Utilities */
+.flex { display: flex; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+.mb-4 { margin-bottom: 16px; }
+.text-secondary { color: var(--text-secondary); }
+.status-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.status-safe { background: var(--safe); box-shadow: 0 0 12px var(--safe); }
+.sos-float {
+  position: fixed; bottom: 40px; right: 40px; width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, #ef4444, #b91c1c); display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 800; border: 2px solid #ffb3b3; cursor: pointer; z-index: 150;
+  box-shadow: 0 0 30px #ef4444aa;
+}
